@@ -1,6 +1,6 @@
 body {
 	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-	background-color: lightgoldenrodyellow;
+	/* background-color: lightgoldenrodyellow; */
 }
 
 .container {
@@ -96,10 +96,6 @@ img {
 	margin-top: 1em;
 	padding: 1em;
 	background-color: lightsalmon;
-
-}
-.garment{
-	border: 2px solid;
 
 }
 

@@ -20,18 +20,24 @@
 		<div class="garmentsResultsSection">
 			<h2>Garments</h2>
 			
-			<div class="searchResults" >
-				<div x-data="app">		
+			<div class="searchResults">
+				<div x-data="app">	
+					There are:<span x-text="garments.length"></span>
+					<div class="garments">	
 					<template x-for="garment in garments" >
-						<ul>
-							<img x-bind:src="`./images/${garment.img}`">
-							<li x-text="garment.description"></li>
-							<li x-text="garment.gender"></li>
-							<li x-text="garment.id"></li>
-							<li x-text="garment.price"></li>
-							<li x-text="garment.season"></li>
-						</ul>
+						<!-- <span x-text=""></span> -->
+						
+							<div class="garment">
+								<img x-bind:src="`./images/${garment.img}`">
+								<div x-text="garment.description"></div>
+								<div x-text="garment.gender"></div>
+								<div x-text="garment.id"></div>
+								<div x-text="garment.price"></div>
+								<div x-text="garment.season"></div>
+							</div>
 					</template>
+				</div>
+
 				</div>
 			</div>
 		</div>

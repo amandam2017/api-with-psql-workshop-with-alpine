@@ -9,7 +9,6 @@ document.addEventListener('alpine:init', () => {
         		.then(r => r.json())
         		.then(userData => {
                     console.log(userData)
-
                     this.garments = userData.data
                     console.log(this.garments)
                 })
