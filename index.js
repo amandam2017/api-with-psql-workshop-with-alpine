@@ -7,7 +7,11 @@ require('dotenv').config()
 
 const API = require('../api-with-psql-workshop-with-alpine/api');
 const { default: axios } = require('axios');
+
 const app = express();
+
+//middlewere to make public folder visible
+app.use(express.static('public'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
