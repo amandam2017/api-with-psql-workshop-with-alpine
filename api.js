@@ -14,7 +14,7 @@ module.exports = function (app, db) {
 			garments = await db.many('select * from garment where season = $1',[season]);
 		}
 		if(gender){
-			garments = await db.many('select * from garment where gender = $1',[gender])
+			garments = await db.manyOrNone('select * from garment where gender = $1',[gender])
 		}
 		if(season && gender){
 			garments = await db.many('select * from garment where season = $1 AND gender = $2',[season, gender])

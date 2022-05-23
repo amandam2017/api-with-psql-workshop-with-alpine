@@ -1,18 +1,38 @@
 document.addEventListener('alpine:init', () => {
-    // alert("!")
     Alpine.data('app', () => ({
-        // garmentOne: '',
-        garments : [],
+
+        garments: [],
+        seasonFilter: '',
+        genderFilter: '',
         init() {
-            // const self = this;
-        	fetch('/api/garments')
-        		.then(r => r.json())
-        		.then(userData => {
-                    console.log(userData)
-                    this.garments = userData.data
+            fetch('/api/garments')
+                .then(r => r.json())
+                .then(results => {
+                    console.log(results)
+                    this.garments = results.data
                     console.log(this.garments)
+
                 })
+
         },
-        
+        filterData() {
+            console.log(this.genderFilter)
+            fetch(`/api/garments?gender=${this.genderFilter}&season=${this.seasonFilter}`)
+            .then(r => r.json())
+            .then(results=>{
+                console.log(results);
+                this.garments = results.data
+                console.log(this.garments);
+            }).catch(err => console.log('No data'))
+
+                // .then(function (result) {
+                //     console.log(result.data);
+                //     this.garments = result.data
+
+                // }).catch(err => console.log('No data'))
+        }
+
+
+
     }));
 })
