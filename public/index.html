@@ -73,22 +73,22 @@
 					<div class="seasons">
 
 						<label>
-							<input type="radio" name="season" value="All"> All
+							<input @change="filterData()" x-model="seasonFilter" type="radio" name="season" value="All"> All
 						</label>
 						<label>
-							<input type="radio" name="season" value="Summer"> Summer
+							<input @change="filterData()" x-model="seasonFilter" type="radio" name="season" value="Summer"> Summer
 						</label>
 						<label>
-							<input type="radio" name="season" value="Winter"> Winter
+							<input @change="filterData()" x-model="seasonFilter" type="radio" name="season" value="Winter"> Winter
 						</label>
 						<label>
-							<input type="radio" name="season" value="All Seasons"> All seasons
+							<input @change="filterData()" x-model="seasonFilter" type="radio" name="season" value="All Seasons"> All seasons
 						</label>
 					</div>
 					<div>
 						Filter by price range:
-						<input type="range" name="priceRange" max="1000" step="50" class="priceRange" value="0">
-						R<span class="showPriceRange">0</span>.00
+						<input @change="priceFilter()" x-model="maxPrice" type="range" name="priceRange" max="1000" step="50" class="priceRange" value="0">
+						R<span x-text="maxPrice" class="showPriceRange"></span>
 					</div>
 					<span id="snackbar">New garment added</span>
 				</div>
@@ -148,7 +148,7 @@
 
 			<div class="searchResults">
 				<div>
-					<!-- There are:<span x-text="garments.length"></span> -->
+					There are:<span x-text="garments.length"></span>
 					<div class="garments">
 						<template x-for="garment in garments">
 							<!-- <span x-text=""></span> -->
