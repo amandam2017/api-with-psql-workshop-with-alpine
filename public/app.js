@@ -6,6 +6,8 @@ document.addEventListener('alpine:init', () => {
         genderFilter: '',
         maxPrice: 0,
         init() {
+            this.filterData();
+            this.priceFilter();
             fetch('/api/garments')
                 .then(r => r.json())
                 .then(results => {
@@ -27,12 +29,11 @@ document.addEventListener('alpine:init', () => {
             console.log(this.maxPrice);
             fetch(`/api/garments/price/${this.maxPrice}`)
                 .then(r => r.json())
-                .then(function (myresults) {
-                    this.garments = myresults.data
-                    console.log(this.garments);
-                })
+                .then(myResults => this.garments = myResults.data)
                 .catch(err => console.log(err))
-        }
+        },
 
-    }));
+    }
+    
+    ));
 })
