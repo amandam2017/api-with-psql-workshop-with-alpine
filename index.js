@@ -5,6 +5,9 @@ const assert = require('assert');
 const fs = require('fs');
 require('dotenv').config()
 
+const pg = require("pg");
+const Pool = pg.Pool;
+
 const API = require('../api-with-psql-workshop-with-alpine/api');
 const { default: axios } = require('axios');
 
@@ -19,6 +22,9 @@ app.use(express.urlencoded({ extended: false }));
 const DATABASE_URL = process.env.DATABASE_URL;
 const pgp = PgPromise({});
 const db = pgp(DATABASE_URL);
+
+// which db connection to use
+const connectionString = process.env.DATABASE_URL || 'postgresql://amanda:@262632@localhost:5432/garments_app';
 
 API(app, db);
 
