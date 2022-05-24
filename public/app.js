@@ -9,7 +9,7 @@ document.addEventListener('alpine:init', () => {
             fetch('/api/garments')
                 .then(r => r.json())
                 .then(results => {
-                    // console.log(results)
+                    console.log(results)
                     this.garments = results.data
                     // console.log(this.garments)
                 })
