@@ -11,7 +11,7 @@ document.addEventListener('alpine:init', () => {
                 .then(results => {
                     console.log(results)
                     this.garments = results.data
-                    // console.log(this.garments)
+                    console.log(this.garments)
                 })
 
         },

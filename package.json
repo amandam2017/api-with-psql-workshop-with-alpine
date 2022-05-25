@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "start": "node app.js"
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.26.1",
+    "connection-string": "^4.3.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "pg-promise": "^10.11.1",
