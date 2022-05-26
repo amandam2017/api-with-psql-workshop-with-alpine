@@ -23,7 +23,7 @@ const DATABASE_URL = process.env.DATABASE_URL;
 const pgp = PgPromise({});
 
 const config = {
-	connectionString: process.env.DATABASE_URL || 'postgres://your_username:your_password@localhost:5432/your_db_name',
+	connectionString: process.env.DATABASE_URL || 'postgres://amanda:@262632@localhost:5432/garments_app',
 	max: 30,
 	ssl:{ rejectUnauthorized : false}
  };
