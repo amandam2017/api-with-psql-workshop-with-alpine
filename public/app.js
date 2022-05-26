@@ -1,11 +1,22 @@
+
 document.addEventListener('alpine:init', () => {
+
     Alpine.data('app', () => ({
 
         garments: [],
         seasonFilter: '',
         genderFilter: '',
         maxPrice: 0,
+        description: '',
+        img: '',
+        price: '',
+        gender: '',
+        season: '',
         init() {
+            this.showAll();
+
+        },
+        showAll(){
             fetch('/api/garments')
                 .then(r => r.json())
                 .then(results => {
@@ -13,10 +24,10 @@ document.addEventListener('alpine:init', () => {
                     this.garments = results.data
                     console.log(this.garments)
                 })
-
         },
+
         filterData() {
-            console.log(this.genderFilter)
+            // console.log(this.genderFilter)
             fetch(`/api/garments?gender=${this.genderFilter}&season=${this.seasonFilter}`)
                 .then(r => r.json())
                 .then(results => this.garments = results.data)
@@ -31,7 +42,35 @@ document.addEventListener('alpine:init', () => {
                 .catch(err => console.log(err))
         },
 
+        addGarments() {
+            url = `/api/garment`
+            const options = {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json;charset=UTF-8",
+                },
+                body: JSON.stringify({
+                    description:this.description,
+                    img:this.img,
+                    price:this.price,
+                    gender:this.gender,
+                    season:this.season,
+                }),
+            };
+
+            fetch(url, options)
+                .then(r => (this.showAll()))
+                let myResults= this.showAll()
+                .then(myResults => this.garments = myResults.data)
+
+                // .then((data) => {
+                //     console.log(data);
+                // });
+        },
+
     }
-    
+
     ));
 })
+
