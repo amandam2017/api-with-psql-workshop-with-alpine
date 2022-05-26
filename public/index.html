@@ -48,7 +48,7 @@
 
 				</div>
 
-				<div class="add button mt1">
+				<div class="add button mt1 hidden">
 					<!-- <a href="">Add garmet</a> -->
 					<button @click="open = !open">Add Garment</button>
 					<!-- <a onclick="showSnackBar()" href="">Add garmet</a> -->
@@ -102,11 +102,13 @@
 
 			<div x-data="{ open: false }" class="addGarment">
 
-				<div class="add button mt1 hidden">
-					<a href="">Add garmet</a>
+				<div class="add button mt1">
+					<button @click="open = !open">Add Garment</button>
+
+					<!-- <a href="">Add garmet</a> -->
 				</div>
 
-				<div class="add garment">
+				<div class="add garment" x-show="open">
 					<h2>Add garment</h2>
 					<img src="/images/{{img}}" alt="">
 
