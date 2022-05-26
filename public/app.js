@@ -62,11 +62,8 @@ document.addEventListener('alpine:init', () => {
             fetch(url, options)
                 .then(r => (this.showAll()))
                 let myResults= this.showAll()
+                
                 .then(myResults => this.garments = myResults.data)
-
-                // .then((data) => {
-                //     console.log(data);
-                // });
         },
 
     }
