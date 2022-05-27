@@ -16,6 +16,9 @@ document.addEventListener('alpine:init', () => {
         userInput: '',
         init() {
             this.showAll();
+            // this.filterData();
+            // this.addGarments();
+            // this.priceFilter();
 
         },
         showAll(){
@@ -61,16 +64,24 @@ document.addEventListener('alpine:init', () => {
                 }),
             };
 
+            const message = 'garment added successfully'
+
             fetch(url, options)
                 .then(r => (this.showAll()))
                 let myResults= this.showAll()
                 
-                .then(myResults => this.garments = myResults.data)
+                .then(myResults => this.garments = myResults.data);
+
+                this.description= '',
+        this.img = '',
+        this.price = '',
+        this.gender = '',
+        this.season = ''
         },
 
-        login(){
+        // login(){
 
-        }
+        // }
 
     }
 

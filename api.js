@@ -19,7 +19,7 @@ module.exports = function (app, db) {
 		if (season && gender) {
 			garments = await db.manyOrNone('select * from garment where season = $1 AND gender = $2', [season, gender])
 		}
-		console.log(garments);
+		// console.log(garments);
 
 		// if(season && gender === 'Unisex'){
 		// 	garments = await db.none(`delete * from garment where gender = $1`, [gender]);
