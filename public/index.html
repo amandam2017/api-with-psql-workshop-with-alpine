@@ -20,22 +20,23 @@
 
 	<div class="container" x-data="app">
 		<h1>Missy Tee - clothing store</h1>
-
-		<!-- <div class="row">
-			<div class="loginSection">
+		<div class="inner_container" x-data="{ show: false }">
+		<div class="row">
+			<div class="loginSection" x-data="{userInput: ''}">
 				<div class="row">
 					<div class="col-sm-3">
 						<label for="" class="form-label">Enter your github username</label>
 					</div>
 					<div class="col-sm-7">
-						<input type="text" class="form-control userInput">
+						<input x-model="userInput" type="text" class="form-control userInput">
 					</div>
 					<div class="col-sm-2">
-					<input type="button" value="login" class="btn btn-primary loginbtn">
+					<button x-bind:disabled="userInput != username" @click="show = !show" type="button" class="btn btn-primary loginbtn">Login</button>
 					</div>
 				</div>
 			</div>
-		</div> -->
+		</div>
+		<div class="show" x-show="show">
 		<div class="topSection">
 			<div class="gaments">
 				<h4>Copy and paste the garnment url below:</h4>
@@ -58,7 +59,7 @@
 					<h2>Filter</h2>
 					<div class="genders">
 						<label>
-							<input @change="showAll()" x-model="genderFilter" type="radio" name="gender" value="All"> All
+							<input @change="showAll()" x-model="genderFilter" type="radio" name="gender" value=""> All
 						</label>
 
 						<label>
@@ -75,7 +76,7 @@
 					<div class="seasons">
 
 						<label>
-							<input @change="filterData()" x-model="seasonFilter" type="radio" name="season" value="All"> All
+							<input @change="filterData()" x-model="seasonFilter" type="radio" name="season" value=""> All
 						</label>
 						<label>
 							<input @change="filterData()" x-model="seasonFilter" type="radio" name="season" value="Summer"> Summer
@@ -166,6 +167,9 @@
 				</div>
 			</div>
 		</div>
+		</div>
+	</div>
+	</div>
 
 		<script src="app.js"></script>
 		<script src="field-manager.js"></script>
@@ -174,3 +178,4 @@
 </body>
 
 </html>
+

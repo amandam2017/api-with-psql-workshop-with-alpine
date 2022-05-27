@@ -9,16 +9,17 @@ module.exports = function (app, db) {
 	app.get('/api/garments', async function (req, res) {
 
 		const { gender, season } = req.query;
-		let garments = await db.many('select * from garment');
+		let garments = await db.manyOrNone('select * from garment');
 		if (season) {
-			garments = await db.many('select * from garment where season = $1', [season]);
+			garments = await db.manyOrNone('select * from garment where season = $1', [season]);
 		}
 		if (gender) {
 			garments = await db.manyOrNone('select * from garment where gender = $1', [gender])
 		}
 		if (season && gender) {
-			garments = await db.many('select * from garment where season = $1 AND gender = $2', [season, gender])
+			garments = await db.manyOrNone('select * from garment where season = $1 AND gender = $2', [season, gender])
 		}
+		console.log(garments);
 
 		// if(season && gender === 'Unisex'){
 		// 	garments = await db.none(`delete * from garment where gender = $1`, [gender]);
@@ -27,6 +28,10 @@ module.exports = function (app, db) {
 		res.json({
 			data: garments
 		})
+	});
+
+	app.post(`api/login`, async function (){
+
 	});
 
 	app.get('/api/garments/price/:price', async function (req, res) {

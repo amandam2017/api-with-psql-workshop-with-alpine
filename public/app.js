@@ -12,6 +12,8 @@ document.addEventListener('alpine:init', () => {
         price: '',
         gender: '',
         season: '',
+        username: 'amandam2017',
+        userInput: '',
         init() {
             this.showAll();
 
@@ -65,6 +67,10 @@ document.addEventListener('alpine:init', () => {
                 
                 .then(myResults => this.garments = myResults.data)
         },
+
+        login(){
+
+        }
 
     }
 
