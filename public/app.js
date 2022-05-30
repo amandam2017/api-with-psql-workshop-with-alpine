@@ -1,3 +1,4 @@
+// const { default: axios } = require("axios");
 
 document.addEventListener('alpine:init', () => {
 
@@ -12,7 +13,7 @@ document.addEventListener('alpine:init', () => {
         price: '',
         gender: '',
         season: '',
-        username: 'amandam2017',
+        // username: 'amandam2017',
         userInput: '',
         init() {
             this.showAll();
@@ -50,28 +51,23 @@ document.addEventListener('alpine:init', () => {
         
 
         login(){
-            app.post('/api/login', cors(), function (req, res, next) {
-
-                // get the username using ES6 constructor
-                const { username } = req.body;
-                console.log(username);
-                // const username = req.body.username;
+            url =  `/api/login`
+            const options = {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json;charset=UTF-8",
+                },
+                body: JSON.stringify({
+                    userInput:this.userInput,
+                }),
+            }
             
-                if (username === adminUser.username) {
+            fetch(url, options)
+            .then(r => (this.showAll()))
+            let myResults= this.showAll()
             
-                    const key = generateAccessToken({username});
-            
-                    res.json({key})
-                }
-                else {
-                    res.json({
-                        message: 'User not allowed to login',
-                        status: 401
-                    })
-                }
-            
-            
-            })
+            .then(myResults => this.garments = myResults.data);
 
         },
 
