@@ -20,9 +20,9 @@
 
 	<div class="container" x-data="app">
 		<h1>Missy Tee - clothing store</h1>
-		<div class="inner_container" x-data="{ show: false }">
+		<div class="inner_container">
 		<div class="row">
-			<div class="loginSection" x-data="{userInput: ''}">
+			<div class="loginSection" x-show="!show" x-data="{userInput: ''}">
 				<div class="row">
 					<div class="col-sm-3">
 						<label for="" class="form-label">Enter your github username</label>
@@ -31,7 +31,7 @@
 						<input x-model="userInput" type="text" class="form-control userInput">
 					</div>
 					<div class="col-sm-2">
-					<button x-bind:disabled="userInput != login()" @click="login(), console.log(login())" type="button" class="btn btn-primary loginbtn">Login</button>
+					<button x-bind:disabled="userInput.length < 3" @click="login(), console.log(login())" type="button" class="btn btn-primary loginbtn">Login</button>
 					</div>
 				</div>
 			</div>
@@ -56,7 +56,9 @@
 				</div>
 			<div class="filter">
 
-					<h2>Filter</h2>
+					<h2>Filter <span>
+						<button @click="logout()">Logout</button>
+					</span></h2>
 					<div class="genders">
 						<label>
 							<input @change="showAll()" x-model="genderFilter" type="radio" name="gender" value=""> All

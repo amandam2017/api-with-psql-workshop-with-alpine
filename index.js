@@ -58,6 +58,9 @@ const jwt = require('jsonwebtoken');
 app.post('/api/login', cors(), function (req, res, next) {
 const adminUser = { username: 'amandam2017' }
 	// get the username using ES6 constructor
+	
+	console.log(req.body);
+
 	const { username } = req.body;
 	console.log(username);
 	// const username = req.body.username;
