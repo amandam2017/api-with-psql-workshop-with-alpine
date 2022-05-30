@@ -47,6 +47,34 @@ document.addEventListener('alpine:init', () => {
                 .catch(err => console.log(err))
         },
 
+        
+
+        login(){
+            app.post('/api/login', cors(), function (req, res, next) {
+
+                // get the username using ES6 constructor
+                const { username } = req.body;
+                console.log(username);
+                // const username = req.body.username;
+            
+                if (username === adminUser.username) {
+            
+                    const key = generateAccessToken({username});
+            
+                    res.json({key})
+                }
+                else {
+                    res.json({
+                        message: 'User not allowed to login',
+                        status: 401
+                    })
+                }
+            
+            
+            })
+
+        },
+
         addGarments() {
             url = `/api/garment`
             const options = {
@@ -73,15 +101,13 @@ document.addEventListener('alpine:init', () => {
                 .then(myResults => this.garments = myResults.data);
 
                 this.description= '',
-        this.img = '',
-        this.price = '',
-        this.gender = '',
-        this.season = ''
+                this.img = '',
+                this.price = '',
+                this.gender = '',
+                this.season = ''
         },
 
-        // login(){
-
-        // }
+        
 
     }
 

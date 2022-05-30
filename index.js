@@ -8,7 +8,7 @@ require('dotenv').config()
 const pg = require("pg");
 const Pool = pg.Pool;
 
-const API = require('../api-with-psql-workshop-with-alpine/api');
+const API = require('./api');
 const { default: axios } = require("axios");
 
 const app = express();
@@ -56,28 +56,28 @@ API(app, db);
 const jwt = require('jsonwebtoken');
 const adminUser = { username: 'amandam2017' }
 // add a login route below:
-app.post('/api/login', cors(), function (req, res, next) {
+// app.post('/api/login', cors(), function (req, res, next) {
 
-	// get the username using ES6 constructor
-	const { username } = req.body;
-	console.log(username);
-	// const username = req.body.username;
+// 	// get the username using ES6 constructor
+// 	const { username } = req.body;
+// 	console.log(username);
+// 	// const username = req.body.username;
 
-	if (username === adminUser.username) {
+// 	if (username === adminUser.username) {
 
-		const key = generateAccessToken({username});
+// 		const key = generateAccessToken({username});
 
-		res.json({key})
-	}
-	else {
-		res.json({
-			message: 'User not allowed to login',
-			status: 401
-		})
-	}
+// 		res.json({key})
+// 	}
+// 	else {
+// 		res.json({
+// 			message: 'User not allowed to login',
+// 			status: 401
+// 		})
+// 	}
 
 
-})
+// })
 
 const authanticateToken = (req, res, next) => {
 	// inside this function we want to get the token that is generated/sent to us and to verify if this is the correct user.
@@ -99,9 +99,9 @@ const authanticateToken = (req, res, next) => {
 
 }
 
-const generateAccessToken = (user) => {
-	return jwt.sign(user, 'secretKey', { expiresIn: '24h' });
-}
+// const generateAccessToken = (user) => {
+// 	return jwt.sign(user, 'secretKey', { expiresIn: '24h' });
+// }
 
 // API routes to be added here
 app.get('/api/posts', authanticateToken, function (req, res) {

@@ -31,7 +31,7 @@
 						<input x-model="userInput" type="text" class="form-control userInput">
 					</div>
 					<div class="col-sm-2">
-					<button x-bind:disabled="userInput != username" @click="show = !show" type="button" class="btn btn-primary loginbtn">Login</button>
+					<button x-bind:disabled="userInput != username" @click="show = !show, console.log(login())" type="button" class="btn btn-primary loginbtn">Login</button>
 					</div>
 				</div>
 			</div>
