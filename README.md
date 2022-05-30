@@ -1,2 +1,2 @@
-# api-with-psql-workshop-with-alpine
+[![Build Status](https://app.travis-ci.com/amandam2017/api-with-psql-workshop-with-alpine.svg?branch=gh-pages)](https://app.travis-ci.com/amandam2017/api-with-psql-workshop-with-alpine)
 # api-with-psql-workshop-with-alpine
