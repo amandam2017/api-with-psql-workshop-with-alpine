@@ -95,11 +95,11 @@
 						<input @change="priceFilter()" x-model="maxPrice" type="range" name="priceRange" max="1000" step="50" class="priceRange" value="0">
 						R<span x-text="maxPrice" class="showPriceRange"></span>
 					</div>
-					<span id="snackbar">New garment added</span>
+					<!-- <span id="snackbar">New garment added</span> -->
 				</div>
 			</div>
 
-			<div x-text="''" class="message hidden">
+			<div x-text="info_message" class="message">
 
 			</div>
 
@@ -174,8 +174,8 @@
 	</div>
 
 		<script src="app.js"></script>
-		<script src="field-manager.js"></script>
-		<script src="add-garment.js"></script>
+		<!-- <script src="field-manager.js"></script> -->
+		<!-- <script src="add-garment.js"></script> -->
 
 </body>
 

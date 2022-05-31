@@ -33,29 +33,29 @@ const fieldManager = FieldManager({
 	'price': 0.00
 });
 
-addGarmetBtn.addEventListener('click', function(evt) {
+// addGarmetBtn.addEventListener('click', function(evt) {
 
-	// fields on the screen
-	const fields = fieldManager.getValues();
+// 	// fields on the screen
+// 	const fields = fieldManager.getValues();
 
-	axios
-		.post('/api/garments', fields)
-		.then(result =>{
-			if (result.data.status == 'error') {
-				showMessage(result.data.message);
-			} else {
-				toggleAddGarmetScreen();
-				// show success message from API
-				showMessage(result.data.message);
-				fieldManager.clear();
-				// show all the data
-				filterData();
-			}
-		})
-		.catch(err => {
-			showMessage(err.stack)
-		});
-});
+// 	axios
+// 		.post('/api/garments', fields)
+// 		.then(result =>{
+// 			if (result.data.status == 'error') {
+// 				showMessage(result.data.message);
+// 			} else {
+// 				toggleAddGarmetScreen();
+// 				// show success message from API
+// 				showMessage(result.data.message);
+// 				fieldManager.clear();
+// 				// show all the data
+// 				filterData();
+// 			}
+// 		})
+// 		.catch(err => {
+// 			showMessage(err.stack)
+// 		});
+// });
 
 addGarmetButtonSection.addEventListener('click', function(evt) {
 	evt.preventDefault();

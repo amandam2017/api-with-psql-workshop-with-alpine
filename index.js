@@ -3,13 +3,13 @@ const PgPromise = require("pg-promise")
 const express = require('express');
 const assert = require('assert');
 const fs = require('fs');
-require('dotenv').config()
+require('dotenv').config();
 
 const pg = require("pg");
 const Pool = pg.Pool;
 
 const API = require('./api');
-const { default: axios } = require("axios");
+// const { default: axios } = require("axios");
 
 const app = express();
 
@@ -115,3 +115,4 @@ const PORT = process.env.PORT || 2206;
 app.listen(PORT, function () {
 	console.log(`App started on port ${PORT}`)
 });
+

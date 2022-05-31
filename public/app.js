@@ -17,17 +17,15 @@ document.addEventListener('alpine:init', () => {
         // username: 'amandam2017',
         userInput: '',
         token: null,
+        info_message: '',
         init() {
-            console.log(this.show)
+            // console.log(this.show)
             if(localStorage['token'] !== undefined) {
                 // send user to login screen
                 // this.show = false;
                 this.token = localStorage.getItem('token')
                 this.showAll();
-            } 
-            // this.filterData();
-            // this.addGarments();
-            // this.priceFilter();
+            }
 
         },
         logout(){
@@ -41,7 +39,7 @@ document.addEventListener('alpine:init', () => {
                     console.log(results)
                     this.garments = results.data
                     this.show = true;
-                    console.log(this.garments)
+                    // console.log(this.garments)
                 })
         },
 
@@ -82,25 +80,16 @@ document.addEventListener('alpine:init', () => {
                 })
                 .then(r => {
                     if (r.key) {
-                        console.log(r.key, '--');
                         this.token = r.key;
                         localStorage.setItem('token', r.key)
                         
                         this
                             .showAll()
                             .then(() => this.show = true )
-
-                        // .then(myResults => {
-                        //     this.garments = myResults.data
-                        // });
                     } else {
                         alert('not logged in!')
                     }
-                })
-            
-            
-            
-            
+                })  
 
         },
 
@@ -121,19 +110,48 @@ document.addEventListener('alpine:init', () => {
                 }),
             };
 
-            const message = 'garment added successfully'
 
             fetch(url, options)
-                .then(r => (this.showAll()))
-            let myResults = this.showAll()
+                .then(r => r.json() )
+                // .then(r => console.log(r) )
+                .then(r => {
+                    if (r.status === 'success'){
+                        // show success message
+                        this.info_message = 'garments added successfully';
+                        setTimeout()
 
-                .then(myResults => this.garments = myResults.data);
+                        // clear the input forms
+                        
+                        this.description = '',
+                        this.img = '',
+                        this.price = '',
+                        this.gender = '',
+                        this.season = ''
 
-            this.description = '',
-                this.img = '',
-                this.price = '',
-                this.gender = '',
-                this.season = ''
+                        // hide the form...
+                        this.open = false;
+
+                        // show the new data
+                        this.showAll()
+
+
+                    } else if (r.status === 'error'){
+                        const error = r.message;
+                        this.info_message = error
+                        setTimeout()
+                        // show the error message
+
+                        // stay on the form...
+                    }
+
+
+                } ),
+
+                setTimeout(() =>  { 
+                    this.info_message = '';
+                    this.error = false;
+                    }, 3000);
+
         },
 
 

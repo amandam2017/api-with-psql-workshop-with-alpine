@@ -101,14 +101,34 @@ module.exports = function (app, db) {
 
 			const { description, price, img, season, gender } = req.body;
 
-			// insert a new garment in the database
-			await db.none(`insert into garment( description, price, img, season, gender) values($1,$2,$3,$4,$5) on conflict do nothing`, [description, price, img, season, gender]);
+			// does the garment exist in the db 
 
-			res.json({
-				status: 'success',
+			// if it does don't add it and send message
 
-			});
+			const garmentCount = await db
+				.one(`select count(*) from garment where description = $1`, 
+				[description],
+				g => g.count)
 
+			console.log(garmentCount)
+			console.log(description)
+
+			if (garmentCount == 0) {
+				// insert a new garment in the database
+				await db.none(`insert into garment( description, price, img, season, gender) values($1,$2,$3,$4,$5) on conflict do nothing`, 
+					[description, price, img, season, gender]);
+
+				res.json({
+					status: 'success',
+				});
+
+			} else {
+				res.json({
+					status: 'error',
+					message: `Garment already exists : ${description}`
+				});
+			}
+			
 		} catch (err) {
 			console.log(err);
 			res.json({
