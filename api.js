@@ -30,10 +30,6 @@ module.exports = function (app, db) {
 		})
 	});
 
-	app.post(`api/login`, async function (){
-
-	});
-
 	app.get('/api/garments/price/:price', async function (req, res) {
 		try {
 			const { price } = req.params;

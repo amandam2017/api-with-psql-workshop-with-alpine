@@ -38,6 +38,9 @@
 		</div>
 		<div class="show" x-show="show">
 		<div class="topSection">
+			<span>
+				<button type="button" class="btn btn-primary" @click="logout()">Logout</button>
+			</span>
 			<div class="gaments">
 				<h4>Copy and paste the garnment url below:</h4>
 				<div class="added_garments">
@@ -55,10 +58,7 @@
 					<!-- <a onclick="showSnackBar()" href="">Add garmet</a> -->
 				</div>
 			<div class="filter">
-
-					<h2>Filter <span>
-						<button @click="logout()">Logout</button>
-					</span></h2>
+					<h2>Filter</h2>
 					<div class="genders">
 						<label>
 							<input @change="showAll()" x-model="genderFilter" type="radio" name="gender" value=""> All

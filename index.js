@@ -110,7 +110,7 @@ app.get('/api/posts', authanticateToken, function (req, res) {
 	res.json({ garmants: garments })
 })
 
-const PORT = process.env.PORT || 2205;
+const PORT = process.env.PORT || 2206;
 
 app.listen(PORT, function () {
 	console.log(`App started on port ${PORT}`)
