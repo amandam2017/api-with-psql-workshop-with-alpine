@@ -22,7 +22,7 @@
 		<h1>Missy Tee - clothing store</h1>
 		<div class="inner_container">
 		<div class="row">
-			<div class="loginSection" x-show="!show" x-data="{userInput: ''}">
+			<div class="loginSection" x-show="!show">
 				<div class="row">
 					<div class="col-sm-3">
 						<label for="" class="form-label">Enter your github username</label>
@@ -115,7 +115,7 @@
 					<h2>Add garment</h2>
 					<img src="/images/{{img}}" alt="">
 
-					<form action="/garment/" method="post" class="addGarmentForm">
+					<form action="/garment/" method="post" class="addGarmentForm" x-data="{formfields: ''}">
 
 						<div class="field">
 							<label for="">Description</label>
@@ -142,7 +142,7 @@
 							</div>
 						</div>
 						<div class="mt1">
-							<input @click="addGarments()" type="button" name="action" value="Add" class="addGarmentBtn">
+							<input x-bind:disabled="description.length<1 @click="addGarments()" type="button" name="action" value="Add" class="addGarmentBtn">
 							<input type="button" name="action" value="Hide" class="hideAddGarmetBtn">
 						</div>
 				</div>

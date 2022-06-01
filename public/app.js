@@ -16,6 +16,7 @@ document.addEventListener('alpine:init', () => {
         show: false,
         // username: 'amandam2017',
         userInput: '',
+        formfields: '',
         token: null,
         info_message: '',
         init() {
@@ -136,13 +137,19 @@ document.addEventListener('alpine:init', () => {
 
 
                     } else if (r.status === 'error'){
+                        setTimeout()
+
+                        // show the error message
                         const error = r.message;
                         this.info_message = error
-                        setTimeout()
-                        // show the error message
 
                         // stay on the form...
-                    }
+                    } 
+                    // else if(r.status === 'empty'){
+                    //     // show error message for empty fields
+                    //     const emptyFieldError = 
+
+                    // }
 
 
                 } ),

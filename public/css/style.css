@@ -94,7 +94,7 @@ img {
 
 .message {
 	margin-top: 1em;
-	padding: 1em;
+	/* padding: 1em; */
 	background-color: lightsalmon;
 
 }

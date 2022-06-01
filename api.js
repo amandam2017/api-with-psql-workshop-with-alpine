@@ -106,8 +106,7 @@ module.exports = function (app, db) {
 			// if it does don't add it and send message
 
 			const garmentCount = await db
-				.one(`select count(*) from garment where description = $1`, 
-				[description],
+				.one(`select count(*) from garment where description = $1`, [description],
 				g => g.count)
 
 			console.log(garmentCount)
@@ -120,6 +119,7 @@ module.exports = function (app, db) {
 
 				res.json({
 					status: 'success',
+					message: 'New Garment has been added',
 				});
 
 			} else {
