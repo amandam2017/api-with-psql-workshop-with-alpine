@@ -91,12 +91,14 @@ img {
 	margin-top: 1em;
 }
 
+.logoutbtn{
+	float: right;
+}
 
 .message {
 	margin-top: 1em;
-	/* padding: 1em; */
 	background-color: lightsalmon;
-
+	/* text-align: center; */
 }
 
 .garment img{

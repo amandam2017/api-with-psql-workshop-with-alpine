@@ -1,5 +1,3 @@
-// const { default: axios } = require("axios");
-
 document.addEventListener('alpine:init', () => {
 
     Alpine.data('app', () => ({
@@ -14,7 +12,6 @@ document.addEventListener('alpine:init', () => {
         gender: '',
         season: '',
         show: false,
-        // username: 'amandam2017',
         userInput: '',
         formfields: '',
         token: null,
@@ -117,8 +114,10 @@ document.addEventListener('alpine:init', () => {
                 // .then(r => console.log(r) )
                 .then(r => {
                     if (r.status === 'success'){
+                        this.showAll()
+
                         // show success message
-                        this.info_message = 'garments added successfully';
+                        this.info_message = 'New Garment has been added!';
                         setTimeout()
 
                         // clear the input forms
@@ -133,11 +132,10 @@ document.addEventListener('alpine:init', () => {
                         this.open = false;
 
                         // show the new data
-                        this.showAll()
+                        // this.showAll()
 
 
                     } else if (r.status === 'error'){
-                        setTimeout()
 
                         // show the error message
                         const error = r.message;
@@ -145,11 +143,7 @@ document.addEventListener('alpine:init', () => {
 
                         // stay on the form...
                     } 
-                    // else if(r.status === 'empty'){
-                    //     // show error message for empty fields
-                    //     const emptyFieldError = 
 
-                    // }
 
 
                 } ),
