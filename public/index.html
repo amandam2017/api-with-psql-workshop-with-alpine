@@ -9,11 +9,12 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script> -->
-	<!-- <script src="./app.js"></script> -->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+		integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="semantic/semantic.min.js"></script>
 	<link rel="stylesheet" href="./css/style.css">
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./semantic/semantic.min.css">
 </head>
 
 <body>
@@ -22,7 +23,7 @@
 		<h1>Missy Tee - clothing store</h1>
 		<div class="inner_container">
 			<div class="row">
-				<div class="loginSection" x-show="!show">
+				<!-- <div class="loginSection" x-show="!show">
 					<div class="row">
 						<div class="col-sm-3">
 							<label for="" class="form-label">Enter your github username</label>
@@ -35,27 +36,37 @@
 								type="button" class="btn btn-primary loginbtn">Login</button>
 						</div>
 					</div>
+				</div> -->
+				<div class="page-login" x-show="!show">
+					<div class="ui centered grid container">
+						<div class="nine wide column">
+							<div class="ui fluid card">
+								<div class="content">
+									<div class="ui form">
+										<div class="field">
+											<label>Enter your username</label>
+											<input x-model="userInput" type="text" name="username" placeholder="username">
+										</div>
+										<button x-bind:disabled="userInput.length < 3" @click="login()" class="ui primary labeled icon button" type="submit">
+											<i class="unlock alternate icon"></i>
+											Login
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="show" x-show="show">
 				<div class="topSection">
 					<div class="gaments">
-						<h4>Copy and paste the garnment url below:</h4>
-						<div class="added_garments">
-							<span>Boyfriend Jeans: bfjeans.png</span>
-							<span>Miniskirt: miniskirt.jpg</span>
-							<span>Leggings: leggings.jpeg</span>
-							<span>Croptop: croptop.jpeg</span>
-							</ul>
-
-						</div>
-
 						<div class="add button mt1 hidden">
 							<!-- <a href="">Add garmet</a> -->
 							<button @click="open = !open">Add Garment</button>
 							<!-- <a onclick="showSnackBar()" href="">Add garmet</a> -->
 						</div>
-						
+
 						<div class="filter">
 							<h2>Filter</h2>
 							<div class="genders">
@@ -125,6 +136,15 @@
 
 						<div class="add garment" x-show="open">
 							<h2>Add garment</h2>
+							<h4>Copy and paste the garnment url below:</h4>
+							<div class="added_garments">
+								<span>Boyfriend Jeans: bfjeans.png</span>
+								<span>Miniskirt: miniskirt.jpg</span>
+								<span>Leggings: leggings.jpeg</span>
+								<span>Croptop: croptop.jpeg</span>
+								</ul>
+
+							</div>
 							<img src="/images/{{img}}" alt="">
 
 							<form action="/garment/" method="post" class="addGarmentForm" x-data="{formfields: ''}">
@@ -135,27 +155,30 @@
 								</div>
 								<div class="field">
 									<label for="">Image</label>
-									<input x-bind:disabled="description.length<5" x-model="img" type="url" name="img" class="img">
+									<input x-bind:disabled="description.length<5" x-model="img" type="url" name="img"
+										class="img">
 								</div>
 								<div class="field">
 									<label for="">Price</label>
-									<input x-bind:disabled="img.length<5" x-model="price" type="number" name="price" step="0.01" class="price">
+									<input x-bind:disabled="img.length<5" x-model="price" type="number" name="price"
+										step="0.01" class="price">
 								</div>
 								<div class="field">
 									<label for="">Gender</label>
 									<div>
-										<input x-bind:disabled="price.length<3" x-model="gender" type="text" name="gender" class="gender">
+										<input x-bind:disabled="price.length<3" x-model="gender" type="text"
+											name="gender" class="gender">
 									</div>
 								</div>
 								<div class="field">
 									<label for="">Season</label>
 									<div>
-										<input x-bind:disabled="gender.length<4" x-model="season" type="text" name="season" class="season">
+										<input x-bind:disabled="gender.length<4" x-model="season" type="text"
+											name="season" class="season">
 									</div>
 								</div>
 								<div class="mt1">
-									<input
-										@click="addGarments()" type="button" name="action" value="Add"
+									<input @click="addGarments()" type="button" name="action" value="Add"
 										class="addGarmentBtn">
 									<input type="button" name="action" value="Hide" class="hideAddGarmetBtn">
 								</div>
@@ -173,10 +196,21 @@
 								<template x-for="garment in garments">
 
 									<div class="garment">
+										<button @click="deleteGament(garment.id)">
+											<i class="remove circle icon"></i>
+										</button>
 										<img x-bind:src="`./images/${garment.img}`">
 										<div x-text="garment.description"></div>
 										<div x-text="garment.price"></div>
+										<!-- <button @click="deleteGament(garment.id)">
+											Delete</button> -->
+										<!-- <div class="ui large buttons"> -->
+
+										<!-- </div> -->
+
 									</div>
+									<i class="remove circle icon"></i>
+
 								</template>
 							</div>
 

@@ -43,6 +43,7 @@ module.exports = function (app, db) {
 		}
 	})
 
+
 	app.put('/api/garment/:id', async function (req, res) {
 
 		try {
@@ -143,6 +144,26 @@ module.exports = function (app, db) {
 		res.json({
 			data: result
 		})
+	});
+
+	app.delete('/api/garments/:id', async function (req, res) {
+
+		try {
+			const { id } = req.params;
+			// delete the garments with the specified gender
+			const results = await db.none(`delete from garment where id = $1`, [id]);
+			// console.log(results);
+			res.json({
+				status: 'success',
+				data: results
+			})
+		} catch (err) {
+			console.log(err);
+			res.json({
+				status: 'success',
+				error: err.stack
+			})
+		}
 	});
 
 

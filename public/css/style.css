@@ -58,6 +58,7 @@ img {
 	padding: 1em;
 	margin: 0.25em;
 	border-radius: 0.5em;
+	width: 300px;
 }
 
 /* SNACK BAR */
@@ -83,7 +84,7 @@ img {
 
 .field label {
 	display: block;
-	width: 5em;
+	/* width: 5em; */
 	margin-top: 0.5em;
 }
 
@@ -95,9 +96,13 @@ img {
 	float: right;
 }
 
-.message {
+.error{
+	background-color: red;
+}
+
+.info_message {
 	margin-top: 1em;
-	background-color: lightsalmon;
+	background-color: green;
 	/* text-align: center; */
 }
 

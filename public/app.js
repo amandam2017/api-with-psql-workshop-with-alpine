@@ -1,3 +1,6 @@
+// const { default: axios } = require("axios");
+// const { append } = require("express/lib/response");
+
 document.addEventListener('alpine:init', () => {
 
     Alpine.data('app', () => ({
@@ -16,6 +19,7 @@ document.addEventListener('alpine:init', () => {
         formfields: '',
         token: null,
         info_message: '',
+        // error: false,
         init() {
             // console.log(this.show)
             if(localStorage['token'] !== undefined) {
@@ -114,6 +118,7 @@ document.addEventListener('alpine:init', () => {
                 // .then(r => console.log(r) )
                 .then(r => {
                     if (r.status === 'success'){
+                        // show the new data
                         this.showAll()
 
                         // show success message
@@ -131,20 +136,15 @@ document.addEventListener('alpine:init', () => {
                         // hide the form...
                         this.open = false;
 
-                        // show the new data
-                        // this.showAll()
-
 
                     } else if (r.status === 'error'){
 
                         // show the error message
                         const error = r.message;
                         this.info_message = error
-
+                        this.error =true;
                         // stay on the form...
                     } 
-
-
 
                 } ),
 
@@ -155,7 +155,13 @@ document.addEventListener('alpine:init', () => {
 
         },
 
+        deleteGament(id){
+            axios
+            .delete(`/api/garments/${id}`)
+            .then(r => this.showAll())
+            .catch(err => console.log(err))
 
+        }
 
     }
 

@@ -9,7 +9,7 @@ const pg = require("pg");
 const Pool = pg.Pool;
 
 const API = require('./api');
-// const { default: axios } = require("axios");
+const { default: axios } = require("axios");
 
 const app = express();
 
