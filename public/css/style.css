@@ -14,6 +14,10 @@ body {
 
 h1{
 	margin: 25px 0;
+	/* border: 2px solid; */
+	background-color: #000;
+	color: #fff;
+	padding:35px !important;
 }
 
 h1, h4{
@@ -54,7 +58,7 @@ img {
 .garment {
 	flex : 1;
 	background-color: beige;
-	border: 1px solid #9f8585;
+	border: 1px solid #000;
 	padding: 1em;
 	margin: 0.25em;
 	border-radius: 0.5em;
