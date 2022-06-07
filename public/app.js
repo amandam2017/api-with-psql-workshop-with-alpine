@@ -1,8 +1,4 @@
-// const { default: axios } = require("axios");
-// const { append } = require("express/lib/response");
-
 document.addEventListener('alpine:init', () => {
-
     Alpine.data('app', () => ({
 
         garments: [],
@@ -89,7 +85,9 @@ document.addEventListener('alpine:init', () => {
                             .showAll()
                             .then(() => this.show = true )
                     } else {
-                        alert('not logged in!')
+                        return this.info_message = 'user not registered!';
+
+                        // alert('user not registered!')
                     }
                 })  
 
@@ -120,18 +118,19 @@ document.addEventListener('alpine:init', () => {
                     if (r.status === 'success'){
                         // show the new data
                         this.showAll()
-
-                        // show success message
-                        this.info_message = 'New Garment has been added!';
-                        setTimeout()
-
-                        // clear the input forms
                         
                         this.description = '',
                         this.img = '',
                         this.price = '',
                         this.gender = '',
                         this.season = ''
+                        // show success message
+                        this.info_message = 'New Garment has been added!';
+                        setTimeout()
+
+                        // clear the input forms
+                        
+                        
 
                         // hide the form...
                         this.open = false;
@@ -143,7 +142,12 @@ document.addEventListener('alpine:init', () => {
                         const error = r.message;
                         this.info_message = error
                         this.error =true;
-                        // stay on the form...
+                        // stay on the form...and clear the fields
+                        this.description = '',
+                        this.img = '',
+                        this.price = '',
+                        this.gender = '',
+                        this.season = ''
                     } 
 
                 } ),
@@ -161,7 +165,7 @@ document.addEventListener('alpine:init', () => {
             .then(r => this.showAll())
             .catch(err => console.log(err))
 
-        }
+        },
 
     }
 

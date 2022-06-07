@@ -104,7 +104,7 @@ img {
 	background-color: red;
 }
 
-.info_message {
+.message {
 	margin-top: 1em;
 	background-color: green;
 	/* text-align: center; */
@@ -128,4 +128,8 @@ img {
 
 .loginSection label{
 	font-size: 13px;
+}
+
+.payment{
+	border: 1px solid;
 }

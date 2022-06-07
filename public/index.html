@@ -26,6 +26,9 @@
 				<div class="page-login" x-show="!show">
 					<div class="ui centered grid container">
 						<div class="nine wide column">
+							<div x-text="info_message" class="message">
+
+							</div>
 							<div class="ui fluid card">
 								<div class="content">
 									<div class="ui form">
@@ -44,7 +47,15 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="show" x-show="show">
+				<div class="row">
+					<div class="payment checkout__section" class="payment">
+						<!-- <div class="payment checkout__section"> -->
+						  <h3 style="border-bottom: 1px solid grey;">Order Summary</h3>
+						  <label for="enteredAmount">Enter Amount</label>	
+				  </div> 
+				</div>
 				<div class="topSection">
 					<div class="gaments">
 						<div class="add button mt1 hidden">
@@ -108,10 +119,10 @@
 
 					</div>
 
-					<div x-data="{ open: false }" class="addGarment">
+					<div x-data="{ openSection: false }" class="addGarment">
 
 						<div class="add button mt1">
-							<button class="btn btn-primary" @click="open = !open">Add Garment</button>
+							<button class="btn btn-primary" @click="openSection = !openSection">Add Garment</button>
 
 						</div>
 						<div class="logoutbtn">
@@ -120,7 +131,7 @@
 							</span>
 						</div>
 
-						<div class="add garment" x-show="open">
+						<div class="add garment" x-show="openSection">
 							<h2>Add garment</h2>
 							<h4>Copy and paste the garnment url below:</h4>
 							<div class="added_garments">
@@ -164,9 +175,11 @@
 									</div>
 								</div>
 								<div class="mt1">
-									<input @click="addGarments()" type="button" name="action" value="Add"
+									<input x-bind:disabled="season.length<4"  @click="addGarments()" type="button" name="action" value="Add"
 										class="addGarmentBtn">
-									<input type="button" name="action" value="Hide" class="hideAddGarmetBtn">
+										<div>
+											<input @click="openSection = !openSection" type="button" name="action" value="Hide">
+										</div>
 								</div>
 						</div>
 
@@ -188,16 +201,16 @@
 										<img x-bind:src="`./images/${garment.img}`">
 										<div x-text="garment.description"></div>
 										<div x-text="garment.price"></div>
-										<!-- <button @click="deleteGament(garment.id)">
-											Delete</button> -->
-										<!-- <div class="ui large buttons"> -->
-
-										<!-- </div> -->
+										<button>Buy</button>
 
 									</div>
-									<i class="remove circle icon"></i>
-
+									
+									<!-- <i class="remove circle icon"></i> -->
 								</template>
+								<div id="listingTable"></div>
+								<a href="javascript:prevPage()" id="btn_prev">Prev</a>
+								<a href="javascript:nextPage()" id="btn_next">Next</a>
+								page: <span id="page"></span>
 							</div>
 
 						</div>
